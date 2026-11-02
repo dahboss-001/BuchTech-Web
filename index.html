@@ -8,6 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Promise Ibuchim Michael | Software, AI & Web Development">
   <meta property="og:description" content="Explore selected web applications, AI-focused work, skills, and services from Promise Ibuchim Michael.">
+<meta name="buchtech-ai-api" content="https://buchtech-ai-api-promise.onrender.com">
   <title>Promise Ibuchim Michael | Software, AI & Web Development</title>
   <style>
     :root {
@@ -100,6 +101,19 @@
     .checklist { list-style:none; padding:0; margin:24px 0 0; display:grid; gap:13px; }
     .checklist li { display:flex; gap:11px; color:var(--muted); }
     .checklist li::before { content:"✓"; color:var(--accent); font-weight:900; }
+    .demo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; align-items:stretch; }
+    .demo-card { display:flex; flex-direction:column; min-width:0; }
+    .demo-card .demo-form { display:flex; flex:1; flex-direction:column; }
+    .demo-card label { display:block; margin:12px 0 7px; font-size:.88rem; font-weight:750; }
+    .demo-card textarea { width:100%; min-height:145px; resize:vertical; border:1px solid var(--line); border-radius:13px; padding:13px; color:var(--text); background:rgba(0,0,0,.2); font:inherit; font-size:.9rem; line-height:1.55; }
+    .demo-card textarea::placeholder { color:#8092aa; }
+    .demo-meta { display:flex; justify-content:space-between; gap:8px; margin-top:6px; color:var(--muted); font-size:.76rem; }
+    .demo-card .btn { width:100%; margin-top:14px; }
+    .demo-card .btn:disabled { opacity:.65; cursor:wait; transform:none; }
+    .demo-result { min-height:90px; margin-top:14px; padding:13px; border:1px solid var(--line); border-radius:13px; background:rgba(0,0,0,.14); color:var(--muted); font-size:.88rem; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .demo-result[data-state="success"] { border-color:rgba(104,240,193,.3); color:var(--text); }
+    .demo-result[data-state="error"] { border-color:rgba(255,125,125,.35); color:#ffc1c1; }
+    .demo-privacy { display:block; margin-top:15px; color:var(--muted); font-size:.8rem; }
     .skills-layout { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
     .skill-group h3 { margin:0 0 8px; }
     .skill-list { margin-top:14px; }
@@ -121,7 +135,7 @@
     @media (max-width:900px) {
       .hero-grid,.about-grid,.contact-panel { grid-template-columns:1fr; }
       .visual { min-height:340px; }
-      .services { grid-template-columns:repeat(2,1fr); }
+      .services,.demo-grid { grid-template-columns:repeat(2,1fr); }
       .hero { padding-top:65px; }
     }
     @media (max-width:680px) {
@@ -137,7 +151,7 @@
       .navlinks .nav-cta { padding:12px 18px; margin-top:5px; }
       .hero { padding:53px 0 45px; }
       section { padding:58px 0; }
-      .services,.steps,.projects,.skills-layout { grid-template-columns:1fr; }
+      .services,.steps,.projects,.skills-layout,.demo-grid { grid-template-columns:1fr; }
       .visual { min-height:315px; }
       .dashboard { padding:17px; }
       .trust { gap:11px; }
@@ -161,6 +175,7 @@
       <div class="navlinks" id="site-links">
         <a href="#work">Projects</a>
         <a href="#services">What I do</a>
+        <a href="#ai-demos">AI demos</a>
         <a href="#skills">Skills</a>
         <a href="#about">About</a>
         <a class="btn primary nav-cta" href="#contact">Let's talk ↗</a>
@@ -249,6 +264,50 @@
     </div>
   </section>
 
+  <section id="ai-demos">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Live AI playground</span><h2>Try the demos. See AI in action.</h2><p>Three small examples of practical AI features: summarize text, understand code, or turn a rough concept into project ideas.</p></div>
+      <div class="demo-grid">
+        <article class="card demo-card">
+          <div class="project-top"><span class="project-type">01 · Text utility</span><span class="project-number" aria-hidden="true">✦</span></div>
+          <h3>Quick summarizer</h3>
+          <p>Paste a passage and get a concise summary with the main points.</p>
+          <form class="demo-form" data-demo="summarize">
+            <label for="summary-input">Text to summarize</label>
+            <textarea id="summary-input" name="text" minlength="8" maxlength="4000" required placeholder="Paste an article excerpt, notes, or a project brief…"></textarea>
+            <div class="demo-meta"><span>Up to 4,000 characters</span><span data-count-for="summary-input">0 / 4000</span></div>
+            <button class="btn primary" type="submit">Summarize with AI <span aria-hidden="true">↗</span></button>
+            <div class="demo-result" data-result-for="summary-input" role="status" aria-live="polite">Your summary will appear here.</div>
+          </form>
+        </article>
+        <article class="card demo-card">
+          <div class="project-top"><span class="project-type">02 · Developer helper</span><span class="project-number" aria-hidden="true">{ }</span></div>
+          <h3>Code explainer</h3>
+          <p>Get a plain-language walkthrough of a short code sample.</p>
+          <form class="demo-form" data-demo="explain">
+            <label for="code-input">Code to explain</label>
+            <textarea id="code-input" name="text" minlength="8" maxlength="4000" required placeholder="Paste a function or a short code snippet…"></textarea>
+            <div class="demo-meta"><span>Up to 4,000 characters</span><span data-count-for="code-input">0 / 4000</span></div>
+            <button class="btn primary" type="submit">Explain this code <span aria-hidden="true">↗</span></button>
+            <div class="demo-result" data-result-for="code-input" role="status" aria-live="polite">The explanation will appear here.</div>
+          </form>
+        </article>
+        <article class="card demo-card">
+          <div class="project-top"><span class="project-type">03 · Idea generation</span><span class="project-number" aria-hidden="true">⌘</span></div>
+          <h3>AI idea starter</h3>
+          <p>Describe a problem or interest and get three practical software project starters.</p>
+          <form class="demo-form" data-demo="ideas">
+            <label for="idea-input">Your idea or problem</label>
+            <textarea id="idea-input" name="text" minlength="8" maxlength="4000" required placeholder="For example: help local shops keep track of customer orders…"></textarea>
+            <div class="demo-meta"><span>Up to 4,000 characters</span><span data-count-for="idea-input">0 / 4000</span></div>
+            <button class="btn primary" type="submit">Explore project ideas <span aria-hidden="true">↗</span></button>
+            <div class="demo-result" data-result-for="idea-input" role="status" aria-live="polite">Your project ideas will appear here.</div>
+          </form>
+        </article>
+      </div>
+      <small class="demo-privacy">These demos send the text you enter to OpenAI through a server-side API for processing. Please do not submit passwords, personal data, confidential code, or other sensitive information.</small>
+    </div>
+  </section>
   <section id="skills">
     <div class="wrap">
       <div class="section-head"><span class="kicker">Tools & capabilities</span><h2>A practical, growing toolkit.</h2><p>Technologies and creative tools from my project-based learning and hands-on work.</p></div>
@@ -347,6 +406,42 @@
       if (show) visible += 1;
     });
     countLabel.textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
+  }));
+  const AI_API_BASE = document.querySelector('meta[name="buchtech-ai-api"]').content.trim().replace(/\/$/, '');
+  document.querySelectorAll('.demo-form textarea').forEach((field) => {
+    field.addEventListener('input', () => {
+      document.querySelector(`[data-count-for="${field.id}"]`).textContent = `${field.value.length.toLocaleString()} / 4,000`;
+    });
+  });
+  document.querySelectorAll('.demo-form').forEach((form) => form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const field = form.elements.text;
+    const button = form.querySelector('button[type="submit"]');
+    const result = document.querySelector(`[data-result-for="${field.id}"]`);
+    const originalLabel = button.textContent.trim();
+    button.disabled = true;
+    button.textContent = 'Working…';
+    result.dataset.state = 'loading';
+    result.textContent = 'Sending your request to the AI service…';
+    try {
+      const response = await fetch(`${AI_API_BASE}/api/demo`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: form.dataset.demo, text: field.value.trim() })
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || 'The demo could not complete. Please try again.');
+      result.dataset.state = 'success';
+      result.textContent = payload.result || 'The AI service returned no text. Please try again.';
+    } catch (error) {
+      result.dataset.state = 'error';
+      result.textContent = error instanceof TypeError
+        ? 'The secure AI service is not reachable yet. Please try again after the service is deployed.'
+        : error.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = originalLabel;
+    }
   }));
   document.querySelector('#year').textContent = new Date().getFullYear();
 </script>

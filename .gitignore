@@ -1,0 +1,12 @@
+# Node dependencies and logs
+node_modules/
+api/node_modules/
+npm-debug.log*
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+api/.env
+api/.env.*
+!api/.env.example
