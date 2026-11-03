@@ -125,7 +125,19 @@
     .contact { padding:0 0 80px; }
     .contact-panel { display:grid; grid-template-columns:1fr 1fr; gap:35px; align-items:center; border:1px solid rgba(104,240,193,.25); border-radius:28px; padding:clamp(25px,5vw,54px); background:radial-gradient(circle at 100% 0,rgba(141,167,255,.15),transparent 45%),linear-gradient(140deg,#10253a,#0a1728); }
     .contact-panel p { color:var(--muted); }
+    .contact-info { display:flex; flex-direction:column; gap:18px; }
     .contact-links { display:grid; gap:12px; }
+    .contact-form { display:grid; gap:14px; padding:24px; border:1px solid var(--line); border-radius:20px; background:rgba(0,0,0,.16); }
+    .contact-form label { display:block; margin-bottom:6px; font-size:.88rem; font-weight:750; }
+    .contact-form input,.contact-form textarea { width:100%; border:1px solid var(--line); border-radius:12px; padding:12px 13px; color:var(--text); background:rgba(0,0,0,.22); font:inherit; }
+    .contact-form input::placeholder,.contact-form textarea::placeholder { color:#8092aa; }
+    .contact-form textarea { min-height:145px; resize:vertical; }
+    .contact-form .btn { width:100%; }
+    .contact-form .btn:disabled { opacity:.65; cursor:wait; transform:none; }
+    .contact-status { min-height:1.5em; margin:0; font-size:.88rem; }
+    .contact-status[data-state="success"] { color:var(--accent); }
+    .contact-status[data-state="error"] { color:#ffc1c1; }
+    .contact-privacy { color:var(--muted); font-size:.78rem; }
     .contact-link { display:flex; align-items:center; gap:13px; padding:16px; border:1px solid var(--line); border-radius:15px; background:rgba(255,255,255,.035); overflow-wrap:anywhere; }
     .contact-link b { display:block; font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
     .contact-link .icon { flex:none; }
@@ -356,18 +368,42 @@
   <section class="contact" id="contact">
     <div class="wrap">
       <div class="contact-panel">
-        <div>
-          <span class="kicker">Let's connect</span>
-          <h2>Have a product idea or a role in mind?</h2>
-          <p>For project inquiries, software opportunities, or professional collaborations, share a little about your goals and how I can contribute. I look forward to learning more.</p>
-          <a class="btn primary" href="mailto:buchtech@proton.me?subject=Professional%20Inquiry%20%E2%80%94%20Promise%20Ibuchim%20Michael">Send an inquiry <span aria-hidden="true">↗</span></a>
+        <div class="contact-info">
+          <div>
+            <span class="kicker">Let's connect</span>
+            <h2>Have a product idea or a role in mind?</h2>
+            <p>For project inquiries, software opportunities, or professional collaborations, share a little about your goals and how I can contribute. I look forward to learning more.</p>
+            <a class="btn secondary" href="mailto:buchtech@proton.me?subject=Professional%20Inquiry%20%E2%80%94%20Promise%20Ibuchim%20Michael">Prefer email? Write directly <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:buchtech@proton.me"><span class="icon" style="margin:0" aria-hidden="true">✉</span><span><b>Email</b>buchtech@proton.me</span></a>
+            <a class="contact-link" href="https://wa.me/2349074644725" target="_blank" rel="noopener noreferrer"><span class="icon" style="margin:0" aria-hidden="true">☏</span><span><b>Call / WhatsApp</b>+234 907 464 4725</span></a>
+            <a class="contact-link" href="https://github.com/dahboss-001" target="_blank" rel="noopener noreferrer"><span class="icon" style="margin:0" aria-hidden="true">⌘</span><span><b>GitHub</b>github.com/dahboss-001</span></a>
+            <div class="contact-link"><span class="icon" style="margin:0" aria-hidden="true">⌖</span><span><b>Based in</b>Awka, Anambra State, Nigeria</span></div>
+          </div>
         </div>
-        <div class="contact-links">
-          <a class="contact-link" href="mailto:buchtech@proton.me"><span class="icon" style="margin:0" aria-hidden="true">✉</span><span><b>Email</b>buchtech@proton.me</span></a>
-          <a class="contact-link" href="https://wa.me/2349074644725" target="_blank" rel="noopener noreferrer"><span class="icon" style="margin:0" aria-hidden="true">☏</span><span><b>Call / WhatsApp</b>+234 907 464 4725</span></a>
-          <a class="contact-link" href="https://github.com/dahboss-001" target="_blank" rel="noopener noreferrer"><span class="icon" style="margin:0" aria-hidden="true">⌘</span><span><b>GitHub</b>github.com/dahboss-001</span></a>
-          <div class="contact-link"><span class="icon" style="margin:0" aria-hidden="true">⌖</span><span><b>Based in</b>Awka, Anambra State, Nigeria</span></div>
-        </div>
+        <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/buchtech@proton.me" method="POST">
+          <input type="hidden" name="_subject" value="New portfolio inquiry for Promise Ibuchim Michael">
+          <div>
+            <label for="contact-name">Your name</label>
+            <input id="contact-name" name="name" autocomplete="name" maxlength="120" required placeholder="Name">
+          </div>
+          <div>
+            <label for="contact-email">Email address</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com">
+          </div>
+          <div>
+            <label for="contact-subject">What would you like to discuss?</label>
+            <input id="contact-subject" name="topic" maxlength="160" required placeholder="Project, role, or collaboration">
+          </div>
+          <div>
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" minlength="10" maxlength="4000" required placeholder="A few details about your goals and how I can help…"></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send message <span aria-hidden="true">↗</span></button>
+          <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
+          <small class="contact-privacy">Your message and email address are sent to FormSubmit to deliver to BuchTech. Please do not include passwords, financial details, or other sensitive information. On first use, confirm FormSubmit's activation email in the recipient inbox.</small>
+        </form>
       </div>
     </div>
   </section>
@@ -443,6 +479,38 @@
       button.textContent = originalLabel;
     }
   }));
+  const contactForm = document.querySelector('#contact-form');
+  const contactStatus = document.querySelector('#contact-status');
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = contactForm.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = 'Sending…';
+    contactStatus.dataset.state = 'loading';
+    contactStatus.textContent = 'Sending your message…';
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload.success === false) {
+        throw new Error(payload.message || 'Your message could not be sent. Please try again or email buchtech@proton.me directly.');
+      }
+      contactStatus.dataset.state = 'success';
+      contactStatus.textContent = 'Thank you—your message was submitted. If this is your first time using the form, check the inbox for buchtech@proton.me and confirm FormSubmit’s activation email.';
+      contactForm.reset();
+    } catch (error) {
+      contactStatus.dataset.state = 'error';
+      contactStatus.textContent = error instanceof TypeError
+        ? 'The form service could not be reached. Please try again or email buchtech@proton.me directly.'
+        : error.message;
+    } finally {
+      button.disabled = false;
+      button.innerHTML = 'Send message <span aria-hidden="true">↗</span>';
+    }
+  });
   document.querySelector('#year').textContent = new Date().getFullYear();
 </script>
 </body>
