@@ -42,8 +42,8 @@
     .brand small { display:block; color:var(--muted); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; font-weight:650; }
     .navlinks { display:flex; align-items:center; gap:24px; color:var(--muted); font-size:.92rem; }
     .navlinks a:hover { color:var(--accent); }
-    .menu-toggle { display:none; border:1px solid var(--line); border-radius:12px; padding:9px 12px; color:var(--text); background:rgba(255,255,255,.04); font:inherit; font-weight:750; }
-    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; border:1px solid transparent; border-radius:999px; padding:12px 19px; font-weight:750; cursor:pointer; transition:transform .2s, background .2s; }
+    .menu-toggle { display:none; min-height:44px; border:1px solid var(--line); border-radius:12px; padding:9px 12px; color:var(--text); background:rgba(255,255,255,.04); font:inherit; font-weight:750; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; min-height:44px; border:1px solid transparent; border-radius:999px; padding:12px 19px; font-weight:750; cursor:pointer; transition:transform .2s, background .2s; }
     .btn:hover { transform:translateY(-2px); }
     .primary { color:#06151b; background:var(--accent); }
     .secondary { border-color:var(--line); background:rgba(255,255,255,.04); }
@@ -81,7 +81,7 @@
     .card h3 { margin:0 0 8px; font-size:1.12rem; }
     .card p { color:var(--muted); font-size:.92rem; margin:0; }
     .projects-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:0 0 20px; }
-    .filter-button { border:1px solid var(--line); border-radius:999px; padding:9px 14px; background:rgba(255,255,255,.035); color:var(--muted); font:inherit; font-size:.88rem; cursor:pointer; }
+    .filter-button { min-height:44px; border:1px solid var(--line); border-radius:999px; padding:9px 14px; background:rgba(255,255,255,.035); color:var(--muted); font:inherit; font-size:.88rem; cursor:pointer; }
     .filter-button[aria-pressed="true"] { color:#06151b; background:var(--accent); border-color:var(--accent); font-weight:800; }
     .project-count { margin-left:auto; color:var(--muted); font-size:.85rem; }
     .projects { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
@@ -129,7 +129,7 @@
     .contact-links { display:grid; gap:12px; }
     .contact-form { display:grid; gap:14px; padding:24px; border:1px solid var(--line); border-radius:20px; background:rgba(0,0,0,.16); }
     .contact-form label { display:block; margin-bottom:6px; font-size:.88rem; font-weight:750; }
-    .contact-form input,.contact-form textarea { width:100%; border:1px solid var(--line); border-radius:12px; padding:12px 13px; color:var(--text); background:rgba(0,0,0,.22); font:inherit; }
+    .contact-form input,.contact-form textarea { width:100%; min-height:44px; border:1px solid var(--line); border-radius:12px; padding:12px 13px; color:var(--text); background:rgba(0,0,0,.22); font:inherit; font-size:16px; }
     .contact-form input::placeholder,.contact-form textarea::placeholder { color:#8092aa; }
     .contact-form textarea { min-height:145px; resize:vertical; }
     .contact-form .btn { width:100%; }
@@ -151,7 +151,8 @@
       .hero { padding-top:65px; }
     }
     @media (max-width:680px) {
-      .wrap { width:min(100% - 28px,var(--max)); }
+      .wrap { width:min(calc(100% - 28px),var(--max)); }
+      header { backdrop-filter:none; background:rgba(7,17,31,.97); }
       nav { min-height:68px; }
       .brand { font-size:.9rem; }
       .brand small { font-size:.62rem; }
@@ -159,13 +160,17 @@
       .menu-toggle { display:inline-flex; }
       .navlinks { display:none; position:absolute; top:calc(100% + 1px); left:0; right:0; padding:14px 20px 20px; border-bottom:1px solid var(--line); background:#0a1728; align-items:stretch; flex-direction:column; gap:6px; }
       .navlinks.open { display:flex; }
-      .navlinks a { padding:10px 4px; }
+      .navlinks a { min-height:44px; padding:10px 4px; }
       .navlinks .nav-cta { padding:12px 18px; margin-top:5px; }
-      .hero { padding:53px 0 45px; }
-      section { padding:58px 0; }
+      .hero { padding:48px 0 38px; }
+      section { padding:48px 0; }
       .services,.steps,.projects,.skills-layout,.demo-grid { grid-template-columns:1fr; }
-      .visual { min-height:315px; }
-      .dashboard { padding:17px; }
+      .visual { min-height:300px; }
+      .orb { width:220px; height:220px; filter:none; }
+      .dashboard { padding:17px; transform:none; box-shadow:0 18px 48px rgba(0,0,0,.28); }
+      .card:hover,.btn:hover { transform:none; }
+      .demo-card textarea { font-size:16px; }
+      .contact-form { padding:18px; }
       .trust { gap:11px; }
       .project-count { width:100%; margin-left:0; }
     }
