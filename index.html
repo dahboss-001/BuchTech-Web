@@ -177,6 +177,14 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
     }
+
+    .floating-whatsapp{position:fixed;right:22px;bottom:22px;z-index:1000;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border-radius:999px;background:#20c76a;color:#06130b;font-weight:850;text-decoration:none;box-shadow:0 12px 32px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25);transition:transform .2s ease,box-shadow .2s ease}
+    .floating-whatsapp:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,.42)}
+    .footer-social{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+    .footer-social a{color:var(--accent);font-weight:750;text-decoration:none}
+    .trust-strip{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .trust-strip span{border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);font-size:.84rem}
+    @media(max-width:520px){.floating-whatsapp{right:14px;bottom:14px;padding:12px 15px;font-size:.9rem}}
   </style>
 </head>
 <body>
@@ -425,8 +433,18 @@
     </div>
   </section>
 </main>
+<a class="floating-whatsapp" href="https://wa.me/2349074644725?text=Hello%20BuchTech%2C%20I%20am%20interested%20in%20your%20services." target="_blank" rel="noopener noreferrer" aria-label="Chat with BuchTech on WhatsApp">WhatsApp <span aria-hidden="true">↗</span></a>
 <footer>
-  <div class="wrap footer-inner"><span>© <span id="year">2026</span> BuchTech Super Intelligence Services</span><span>Software · AI · Web development</span></div>
+  <div class="wrap footer-inner">
+    <span>© <span id="year">2026</span> BuchTech Super Intelligence Services</span>
+    <span>Web development · AI solutions · Digital products</span>
+    <span class="footer-social">
+      <a href="https://github.com/dahboss-001" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a href="mailto:buchtech@proton.me">Email ↗</a>
+      <a href="https://wa.me/2349074644725" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (profile coming soon)">LinkedIn — coming soon</a>
+    </span>
+  </div>
 </footer>
 <script>
   const menuButton = document.querySelector('.menu-toggle');
